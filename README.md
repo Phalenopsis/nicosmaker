@@ -16,3 +16,6 @@ You could update your .bash_aliases file in your ~ directory with :
 so, you could type :
 `nico make:service load`
 to create a LoadService class
+
+With GrumPHP/phpcs :
+add nicosmaker.php to gitignore
