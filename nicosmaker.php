@@ -42,7 +42,7 @@ class NicosMaker
     {
         echo 'please type :' . PHP_EOL;
         echo 'make:jscontroller name' . PHP_EOL;
-        echo 'to create a clipboard_controller.js, type make:jscontroller clipboard' . PHP_EOL;
+        echo 'to create a clipboard_controller.js, type make:jscontroller clipboard' . PHP_EOL . PHP_EOL;
         echo 'make:service name' . PHP_EOL;
         echo 'to create a ClipboardService.php, type make:service clipboard' . PHP_EOL;
     }
