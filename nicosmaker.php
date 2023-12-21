@@ -2,7 +2,6 @@
 
 class NicosMaker
 {
-    private const POSSIBILITIES = ['-h', 'make:jscontroller', 'make:service'];
     private array $args;
     private string $order;
     private ?string $fileName;
@@ -35,12 +34,12 @@ class NicosMaker
         $this->$action();
     }
 
-    private function showError(string $str = "Command not recognized")
+    private function showError(string $str = "Command not recognized"): void
     {
         echo "\033[31m" . $str . "\033[0m" . PHP_EOL;
     }
 
-    private function showSucces(string $str = "Succes!")
+    private function showSucces(string $str = "Succes!"): void
     {
         echo "\033[32m" . $str . "\033[0m" . PHP_EOL;
     }
@@ -92,7 +91,7 @@ class NicosMaker
         }
     }
 
-    private function makeService()
+    private function makeService(): void
     {
         $this->checkFileName();
         $class = ucfirst($this->fileName);
@@ -114,7 +113,7 @@ class NicosMaker
         echo "\033[32mfile " . $file . " created\033[0m" . PHP_EOL;
     }
 
-    private function makeJsController()
+    private function makeJsController(): void
     {
         $this->checkFileName();
         $dir = './assets/controllers';
@@ -142,7 +141,7 @@ class NicosMaker
         $this->showSucces("I need one too !");
     }
 
-    private function createAlias()
+    private function createAlias(): void
     {
         // in construct
         $dir = '~';
