@@ -11,7 +11,7 @@ to get help
 ## hint
 
 You could update your .bash_aliases file in your ~ directory with :
-alias nico='php nicosmaker.php'
+`alias nico='php nicosmaker.php'`
 
 so, you could type :
 `nico make:service load`
