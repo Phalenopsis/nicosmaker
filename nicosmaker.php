@@ -29,8 +29,20 @@ class NicosMaker
             '-h' => 'launchHelp',
             'make:service' => 'makeService',
             'make:jscontroller' => 'makeJsController',
+            'make:coffee' => 'makeCoffee',
+            default => 'showError'
         };
         $this->$action();
+    }
+
+    private function showError(string $str = "Command not recognized")
+    {
+        echo "\033[31m" . $str . "\033[0m" . PHP_EOL;
+    }
+
+    private function showSucces(string $str = "Succes!")
+    {
+        echo "\033[32m" . $str . "\033[0m" . PHP_EOL;
     }
 
     private function requestHelp(): void
@@ -49,18 +61,16 @@ class NicosMaker
 
     private function isRequestWellBuilt(): bool
     {
-        return  count($this->args) >= 2 &&
-            in_array($this->args[1], self::POSSIBILITIES) &&
-            ($this->args[1] === '-h' || isset($this->args[2]));
+        return  count($this->args) >= 2;
     }
 
     private function createDirectory(string $dir): void
     {
         if (!is_dir($dir)) {
             if (mkdir($dir, 0777, true)) {
-                echo "\033[32mdirectory " . $dir . " created\033[0m" . PHP_EOL;
+                $this->showSucces("directory " . $dir . " created");
             } else {
-                echo "\033[31mCouldn't create directory " . $dir . "\033[0m" . PHP_EOL;
+                $this->showError("Couldn't create directory " . $dir);
                 die;
             }
         }
@@ -69,13 +79,22 @@ class NicosMaker
     private function checkFile(string $file): void
     {
         if (is_file($file)) {
-            echo "\033[31mthe file already exists\033[0m" . PHP_EOL;
+            $this->showError("file already exists");
+            die;
+        }
+    }
+
+    private function checkFileName(): void
+    {
+        if ($this->fileName === null) {
+            $this->showError("you forgot the filename");
             die;
         }
     }
 
     private function makeService()
     {
+        $this->checkFileName();
         $class = ucfirst($this->fileName);
         $dir = './src/Service';
         $this->createDirectory($dir);
@@ -97,6 +116,7 @@ class NicosMaker
 
     private function makeJsController()
     {
+        $this->checkFileName();
         $dir = './assets/controllers';
         $this->createDirectory($dir);
 
@@ -115,6 +135,11 @@ class NicosMaker
         fwrite($fileToWrite, "\t}" . PHP_EOL);
         fwrite($fileToWrite, "}" . PHP_EOL);
         echo "\033[32mfile " . $file . " created\033[0m" . PHP_EOL;
+    }
+
+    private function makeCoffee(): void
+    {
+        $this->showSucces("I need one too !");
     }
 
     private function createAlias()
