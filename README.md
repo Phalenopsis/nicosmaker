@@ -11,11 +11,15 @@ to get help
 ## hint
 
 You could update your .bash_aliases file in your ~ directory with :
+
 `alias nico='php nicosmaker.php'`
 
 so, you could type :
+
 `nico make:service load`
+
 to create a LoadService class
 
 With GrumPHP/phpcs :
-add nicosmaker.php to gitignore
+add nicosmaker.php to gitignore because i want only one file and it launch
+ script after the class body
