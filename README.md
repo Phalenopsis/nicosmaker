@@ -1,6 +1,7 @@
 # nicosmaker
 
-a little script to create automatically symfony service and stimulus controller
+a little script to create automatically symfony service and stimulus controller 
+(i discover after created this file that Symfofy have a make:stimulus-controller)
 
 place this file in your symfony project root
 
@@ -21,5 +22,4 @@ so, you could type :
 to create a LoadService class
 
 With GrumPHP/phpcs :
-add nicosmaker.php to gitignore because i want only one file and it launch
- script after the class body
+add nicosmaker.php to gitignore because i want only one file and it launch script after the class body
