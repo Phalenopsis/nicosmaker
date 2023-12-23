@@ -106,7 +106,7 @@ class NicosMaker
         fwrite($fileToWrite, PHP_EOL);
         fwrite($fileToWrite, 'namespace App\\Service;' . PHP_EOL);
         fwrite($fileToWrite, PHP_EOL);
-        fwrite($fileToWrite, 'class ' . $class . PHP_EOL);
+        fwrite($fileToWrite, 'class ' . $class . 'Service' . PHP_EOL);
         fwrite($fileToWrite, '{' . PHP_EOL);
         fwrite($fileToWrite, '}' . PHP_EOL);
         fclose($fileToWrite);
